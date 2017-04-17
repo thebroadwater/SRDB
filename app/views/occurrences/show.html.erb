@@ -21,9 +21,11 @@
         <% end %>
       </ul>
 
-      <ul>
-        <%= render "add_source" %>
-      </ul>
+      <% if !Rails.env.production? %>
+        <ul>
+          <%= render "add_source" %>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>
