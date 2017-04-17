@@ -1,26 +1,28 @@
-<%= form_for :occurrence, url: {controller: "/occurrences"} do |f| %>
+<% if !Rails.env.production? %>
+  <%= form_for :occurrence, url: {controller: "/occurrences"} do |f| %>
 
-<div class="form-group row">
-  <%= f.label :details, :class => "col-md-2 col-form-label" %>
-  <div class="col-md-8">
-    <%= f.text_area :details, :rows => '6', :class => 'form-control' %>
+  <div class="form-group row">
+    <%= f.label :details, :class => "col-md-2 col-form-label" %>
+    <div class="col-md-8">
+      <%= f.text_area :details, :rows => '6', :class => 'form-control' %>
+    </div>
   </div>
-</div>
 
-<div class="form-group row">
-  <%= f.label :date, :class => "col-md-2 col-form-label" %>
-  <div class="col-md-2">
-    <%= f.date_field :date, :class => 'form-control' %>
+  <div class="form-group row">
+    <%= f.label :date, :class => "col-md-2 col-form-label" %>
+    <div class="col-md-2">
+      <%= f.date_field :date, :class => 'form-control' %>
+    </div>
   </div>
-</div>
 
-<div class="form-group row justify-content-left">
-  <div>
-    <% if @event %>
-      <%= hidden_field_tag 'event_id', @event.id %>
-    <% end %>
-    <%= f.submit "Save Occurrence", :class => "btn btn-secondary"%>
+  <div class="form-group row justify-content-left">
+    <div>
+      <% if @event %>
+        <%= hidden_field_tag 'event_id', @event.id %>
+      <% end %>
+      <%= f.submit "Save Occurrence", :class => "btn btn-secondary"%>
+    </div>
   </div>
-</div>
 
+  <% end %>
 <% end %>

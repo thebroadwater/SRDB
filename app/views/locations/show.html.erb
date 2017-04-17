@@ -26,14 +26,16 @@
         <% end %>
       </ul>
 
-      <%= render "source" %>
+      <% if !Rails.env.production? %>
+        <%= render "source" %>
 
-      <div class="form-group row justify-content-center">
-        <div>
-          <%= link_to "Edit", edit_location_path(@location), :class => "btn btn-primary", :role=> "button"%>
-          <%= link_to "Back", locations_path, :class =>"btn btn-primary", :role => "button"  %>
+        <div class="form-group row justify-content-center">
+          <div>
+            <%= link_to "Edit", edit_location_path(@location), :class => "btn btn-primary", :role=> "button"%>
+            <%= link_to "Back", locations_path, :class =>"btn btn-primary", :role => "button"  %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

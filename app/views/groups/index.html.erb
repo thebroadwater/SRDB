@@ -19,18 +19,20 @@
               <%= link_to org.name, group_path(org) %>
             </td>
             <td><%= org.kind %></td>
-            <td>
-              <%= link_to 'Edit', edit_group_path(org),
-                :class => "btn btn-primary btn-xs",
-                :role=> "button"
-              %>
-              <%= link_to 'Delete', group_path(org),
-                :class => "btn btn-danger btn-xs",
-                :role=> "button",
-                method: :delete,
-                data: { confirm: 'Are you sure?' }
-              %>
-            </td>
+            <% if !Rails.env.production? %>
+              <td>
+                <%= link_to 'Edit', edit_group_path(org),
+                  :class => "btn btn-primary btn-xs",
+                  :role=> "button"
+                %>
+                <%= link_to 'Delete', group_path(org),
+                  :class => "btn btn-danger btn-xs",
+                  :role=> "button",
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+              </td>
+            <% end %>
           </tr>
           <% end %>
         </tbody>

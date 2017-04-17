@@ -20,18 +20,20 @@
               <%= link_to location.name, location_path(location) %>
             </td>
             <td><%= location.kind %></td>
-            <td>
-              <%= link_to 'Edit', edit_location_path(location),
-                :class => "btn btn-primary btn-xs",
-                :role=> "button"
-              %>
-              <%= link_to 'Delete', location_path(location),
-                :class => "btn btn-danger btn-xs",
-                :role=> "button",
-                method: :delete,
-                data: { confirm: 'Are you sure?' }
-              %>
-            </td>
+            <% if !Rails.env.production? %>
+              <td>
+                <%= link_to 'Edit', edit_location_path(location),
+                  :class => "btn btn-primary btn-xs",
+                  :role=> "button"
+                %>
+                <%= link_to 'Delete', location_path(location),
+                  :class => "btn btn-danger btn-xs",
+                  :role=> "button",
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+              </td>
+            <% end %>
           </tr>
 
           <% end %>

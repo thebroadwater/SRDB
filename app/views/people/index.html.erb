@@ -1,7 +1,6 @@
 <%= render "shared/nav" %>
 
-<%= !Rails.env.production? %>
-<% if Rails.env.development? %>
+<% if !Rails.env.production? %>
   <%= link_to 'New person', new_person_path %>
 <% end %>
 
@@ -24,7 +23,7 @@
             </td>
             <td><%= person.BLUF %></td>
 
-            <% if Rails.env.development? %>
+            <% if !Rails.env.production? %>
               <td>
                 <%= link_to 'Edit', edit_person_path(person),
                   :class => "btn btn-primary btn-xs",

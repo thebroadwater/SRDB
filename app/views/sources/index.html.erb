@@ -26,18 +26,20 @@
                 end
               %>
             </td>
-            <td>
-              <%= link_to "Edit", edit_source_path(source),
-                :class => "btn btn-primary btn-xs",
-                :role=> "button"
-              %>
-              <%= link_to "Delete", source_path(source),
-                :class => "btn btn-danger btn-xs",
-                :role=> "button",
-                method: :delete,
-                data: { confirm: 'Are you sure?' }
-              %>
-            </td>
+            <% if !Rails.env.production? %>
+              <td>
+                <%= link_to "Edit", edit_source_path(source),
+                  :class => "btn btn-primary btn-xs",
+                  :role=> "button"
+                %>
+                <%= link_to "Delete", source_path(source),
+                  :class => "btn btn-danger btn-xs",
+                  :role=> "button",
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+              </td>
+            <% end %>
           </tr>
         <% end %>
 </table>
