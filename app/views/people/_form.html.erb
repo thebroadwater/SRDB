@@ -1,3 +1,5 @@
+<% if Rails.env.development? %>
+
 <%= form_for @person do |f| %>
 
   <% if @person.errors.any? %>
@@ -74,4 +76,5 @@
     </div>
   </div>
 
+<% end %>
 <% end %>

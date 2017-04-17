@@ -23,14 +23,16 @@
         <% end %>
       </ul>
 
-      <%= render "source" %>
+      <% if Rails.env.development? %>
+        <%= render "source" %>
 
-      <div class="form-group row justify-content-center">
-        <div>
-          <%= link_to "Edit", edit_person_path(@person), :class => "btn btn-primary", :role=> "button"%>
-          <%= link_to "Back", people_path, :class =>"btn btn-primary", :role => "button"  %>
+        <div class="form-group row justify-content-center">
+          <div>
+            <%= link_to "Edit", edit_person_path(@person), :class => "btn btn-primary", :role=> "button"%>
+            <%= link_to "Back", people_path, :class =>"btn btn-primary", :role => "button"  %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
