@@ -1,6 +1,8 @@
 <%= render "shared/nav" %>
 
-<%= link_to 'New occurrence', new_occurrence_path %>
+<% if !Rails.env.production? %>
+  <%= link_to 'New occurrence', new_occurrence_path %>
+<% end %>
 
 <% previous_date = DateTime.now %>
 

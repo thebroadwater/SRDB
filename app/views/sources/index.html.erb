@@ -1,6 +1,8 @@
 <%= render "shared/nav" %>
 
-<%= link_to 'New source', new_source_path %>
+<% if !Rails.env.production? %>
+  <%= link_to 'New source', new_source_path %>
+<% end %>
 
 <div class="container-fluid">
   <div class="row justify-content-center">
