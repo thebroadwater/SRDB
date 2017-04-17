@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding-top: 50px;
+}
+
+.view-template {
+  padding: 25px;
+}
+
+.btn-xs, .btn-group-xs > .btn {
+  padding: 1px 5px;
+  font-size: 12px;
+  border-radius: 6px;
+}

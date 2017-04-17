@@ -1,0 +1,9 @@
+<strong>Add a source:</strong>
+
+  <%= form_for([@person, @person.person_sources.build]) do |f| %>
+    <%= f.collection_select(:source_id, Source.order(:title).all, :id, :title) %>
+    Page(s)
+    <%= f.text_field :pages %>
+    <%= f.submit "Add"%>
+  <% end %>
+<br>

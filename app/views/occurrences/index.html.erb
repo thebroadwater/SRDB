@@ -1,0 +1,34 @@
+<%= render "shared/nav" %>
+
+<%= link_to 'New occurrence', new_occurrence_path %>
+
+<% previous_date = DateTime.now %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+        <% @occurrences.each do |occurrence| %>
+          <dl>
+            <% if previous_date != occurrence.date %>
+            <dt>
+              <%= occurrence.date.to_formatted_s(:rfc822) %>
+            </dt>
+            <% end %>
+            <% previous_date = occurrence.date %>
+            <dd>
+              <%= link_to '&bull;'.html_safe, occurrence_path(occurrence) %>
+              <%= occurrence.details %>
+
+              <% @occurrence = Occurrence.find(occurrence.id) %>
+
+                <% iSourceCount = 1
+                  @occurrence.occurrence_sources.each do |occurrence_source| %>
+                <% end %>
+
+            </dd>
+          </dl>
+        <% end %>
+
+    </div>
+  </div>
+</div>

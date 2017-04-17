@@ -1,0 +1,40 @@
+<%= render "shared/nav" %>
+
+<%= link_to 'New group', new_group_path %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |org| %>
+          <tr>
+            <td>
+              <%= link_to org.name, group_path(org) %>
+            </td>
+            <td><%= org.kind %></td>
+            <td>
+              <%= link_to 'Edit', edit_group_path(org),
+                :class => "btn btn-primary btn-xs",
+                :role=> "button"
+              %>
+              <%= link_to 'Delete', group_path(org),
+                :class => "btn btn-danger btn-xs",
+                :role=> "button",
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+              %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

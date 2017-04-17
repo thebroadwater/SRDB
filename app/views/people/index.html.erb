@@ -1,0 +1,42 @@
+<%= render "shared/nav" %>
+
+<%= link_to 'New person', new_person_path %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>BLUF</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @people.each do |person| %>
+
+          <tr>
+            <td>
+              <%= link_to person.name, person_path(person) %>
+            </td>
+            <td><%= person.BLUF %></td>
+            <td>
+              <%= link_to 'Edit', edit_person_path(person),
+                :class => "btn btn-primary btn-xs",
+                :role=> "button"
+              %>
+              <%= link_to 'Delete', person_path(person),
+                :class => "btn btn-danger btn-xs",
+                :role=> "button",
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+              %>
+            </td>
+          </tr>
+
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

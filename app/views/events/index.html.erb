@@ -1,0 +1,38 @@
+<%= render "shared/nav" %>
+
+<%= link_to 'New event', new_event_path %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= link_to event.name, event_path(event) %></td>
+              <td><%= event.detail %></td>
+              <td>
+                <%= link_to 'Edit', edit_event_path(event),
+                  :class => "btn btn-primary btn-xs",
+                  :role=> "button"
+                %>
+                <%= link_to 'Delete', event_path(event),
+                  :class => "btn btn-danger btn-xs",
+                  :role=> "button",
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' }
+                %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

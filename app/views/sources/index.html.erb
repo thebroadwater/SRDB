@@ -1,0 +1,43 @@
+<%= render "shared/nav" %>
+
+<%= link_to 'New source', new_source_path %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Title</th>
+            <th>Edition</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        <% @sources.each do |source| %>
+          <tr>
+            <td><%= link_to source.sku, source_path(source) %></td>
+            <td><%= source.title %></td>
+            <td>
+              <%=
+                if source.edition.present?
+                  source.edition.name
+                end
+              %>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_source_path(source),
+                :class => "btn btn-primary btn-xs",
+                :role=> "button"
+              %>
+              <%= link_to "Delete", source_path(source),
+                :class => "btn btn-danger btn-xs",
+                :role=> "button",
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+              %>
+            </td>
+          </tr>
+        <% end %>
+</table>

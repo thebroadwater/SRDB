@@ -1,0 +1,33 @@
+<%= render "shared/nav" %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-10 view-template">
+
+      <h3><%= @group.name %></h3>
+      <p class="lead"><%= @group.kind %></p>
+
+      <dl>
+        <dt>Subtype</dt> <dd><%= @group.subtype %></dd>
+        <dt>Notes</dt> <dd><%= @group.notes %></dd>
+      </dl>
+
+      <strong>Sources</strong>
+
+      <ul>
+        <% @group.group_sources.each do |group_source| %>
+          <li><%= group_source.source.title %> p. <%= group_source.pages %></li>
+        <% end %>
+      </ul>
+
+      <%= render "source" %>
+
+      <div class="form-group row justify-content-center">
+        <div>
+          <%= link_to "Edit", edit_group_path(@group), :class => "btn btn-primary", :role=> "button"%>
+          <%= link_to "Back", groups_path, :class =>"btn btn-primary", :role => "button"  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

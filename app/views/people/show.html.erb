@@ -1,0 +1,36 @@
+<%= render "shared/nav" %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-10 view-template">
+
+      <h3><%= @person.name %></h3>
+      <p class="lead"><%= @person.BLUF %></p>
+
+      <dl>
+        <dt>Affiliation</dt> <dd><%= @person.affiliation %></dd>
+        <dt>Description</dt> <dd><%= @person.description %></dd>
+        <dt>Notes</dt> <dd><%= @person.notes %></dd>
+        <dt>Active</dt> <dd><%= @person.active %></dd>
+        <dt>Metatype</dt> <dd><%= @person.metatype %></dd>
+      </dl>
+
+      <strong>Sources</strong><br>
+
+      <ul>
+        <% @person.person_sources.each do |person_source| %>
+          <li><%= person_source.source.title %> p. <%= person_source.pages %></li>
+        <% end %>
+      </ul>
+
+      <%= render "source" %>
+
+      <div class="form-group row justify-content-center">
+        <div>
+          <%= link_to "Edit", edit_person_path(@person), :class => "btn btn-primary", :role=> "button"%>
+          <%= link_to "Back", people_path, :class =>"btn btn-primary", :role => "button"  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

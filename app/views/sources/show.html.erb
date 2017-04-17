@@ -1,0 +1,40 @@
+<%= render "shared/nav" %>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-10 view-template">
+
+      <h3><%= @source.title %></h3>
+      <p class="lead">
+        <%= if @source.publisher
+          @source.publisher.name
+        end
+        %>
+        <%= @source.try(:sku) %>
+      </p>
+
+      <dl>
+        <dt>Front Cover</dt>
+        <dd>
+          <%= if @source.image_addr.present?
+            image_tag(@source.image_addr, :alt => "Cover Image", :style => "width:250px")
+          end %>
+        </dd>
+        <dt>Back Cover Text</dt> <dd><%= simple_format(@source.try(:back_text)) %></dd>
+        <dt>Publication Date</dt>
+        <dd>
+          <%= if @source.publication_date.present?
+            @source.publication_date.to_date.to_formatted_s(:rfc822)
+          end %>
+        </dd>
+        <dt>Game Date</dt>
+        <dd>
+          <%= if @source.game_date.present?
+            @source.game_date.to_date.to_formatted_s(:rfc822)
+          end %>
+        </dd>
+      </dl>
+
+    </div>
+  </div>
+</div>
