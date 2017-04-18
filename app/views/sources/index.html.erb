@@ -1,6 +1,6 @@
 <%= render "shared/nav" %>
 
-<% if !Rails.env.production? %>
+<% if user_signed_in? %>
   <%= link_to 'New source', new_source_path %>
 <% end %>
 
@@ -10,6 +10,7 @@
       <table class="table">
         <thead>
           <tr>
+            <th></th>
             <th>SKU</th>
             <th>Title</th>
             <th>Edition</th>
@@ -19,6 +20,12 @@
 
         <% @sources.each do |source| %>
           <tr>
+            <td>
+              <%= if source.image_addr.present?
+                thumbnail = source.image_addr.gsub(".png", "t.png")
+                image_tag(thumbnail, :alt => "Cover Image", :style => "width:50px")
+              end %>
+            </td>
             <td><%= link_to source.sku, source_path(source) %></td>
             <td><%= source.title %></td>
             <td>
@@ -28,7 +35,7 @@
                 end
               %>
             </td>
-            <% if !Rails.env.production? %>
+            <% if user_signed_in? %>
               <td>
                 <%= link_to "Edit", edit_source_path(source),
                   :class => "btn btn-primary btn-xs",

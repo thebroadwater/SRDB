@@ -1,6 +1,6 @@
 <%= render "shared/nav" %>
 
-<% if !Rails.env.production? %>
+<% if user_signed_in? %>
   <%= link_to 'New location', new_location_path %>
 <% end %>
 
@@ -22,7 +22,7 @@
               <%= link_to location.name, location_path(location) %>
             </td>
             <td><%= location.kind %></td>
-            <% if !Rails.env.production? %>
+            <% if user_signed_in? %>
               <td>
                 <%= link_to 'Edit', edit_location_path(location),
                   :class => "btn btn-primary btn-xs",

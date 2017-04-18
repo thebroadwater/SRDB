@@ -21,7 +21,7 @@
         <% end %>
       </ul>
 
-      <% if !Rails.env.production? %>
+      <% if user_signed_in? %>
         <ul>
           <%= render "add_source" %>
         </ul>

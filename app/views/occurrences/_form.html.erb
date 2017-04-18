@@ -1,4 +1,4 @@
-<% if !Rails.env.production? %>
+<% if user_signed_in? %>
   <%= form_for :occurrence, url: {controller: "/occurrences"} do |f| %>
 
   <div class="form-group row">

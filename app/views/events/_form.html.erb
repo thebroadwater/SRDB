@@ -1,4 +1,4 @@
-<% if !Rails.env.production? %>
+<% if user_signed_in? %>
   <%= form_for @event do |f| %>
 
     <% if @event.errors.any? %>

@@ -1,6 +1,6 @@
 <%= render "shared/nav" %>
 
-<% if !Rails.env.production? %>
+<% if user_signed_in? %>
   <%= link_to 'New occurrence', new_occurrence_path %>
 <% end %>
 

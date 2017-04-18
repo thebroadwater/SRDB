@@ -1,6 +1,6 @@
 <%= render "shared/nav" %>
 
-<% if !Rails.env.production? %>
+<% if user_signed_in? %>
   <%= link_to 'New group', new_group_path %>
 <% end %>
 
@@ -21,7 +21,7 @@
               <%= link_to org.name, group_path(org) %>
             </td>
             <td><%= org.kind %></td>
-            <% if !Rails.env.production? %>
+            <% if user_signed_in? %>
               <td>
                 <%= link_to 'Edit', edit_group_path(org),
                   :class => "btn btn-primary btn-xs",

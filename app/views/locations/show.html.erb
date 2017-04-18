@@ -26,7 +26,7 @@
         <% end %>
       </ul>
 
-      <% if !Rails.env.production? %>
+      <% if user_signed_in? %>
         <%= render "source" %>
 
         <div class="form-group row justify-content-center">

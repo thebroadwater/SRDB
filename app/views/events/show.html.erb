@@ -34,7 +34,7 @@
         </dl>
       </div>
 
-<% if !Rails.env.production? %>
+<% if user_signed_in? %>
   add new occurrence to event
 
   <%= form_for :occurrence, url: {controller: "/occurrences"} do |f| %>
