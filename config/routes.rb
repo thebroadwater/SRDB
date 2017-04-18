@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users, :skip => [:registrations]
+
   resources :people do
     resources :person_sources
   end

@@ -10,6 +10,13 @@ end
 gem 'rails', '~> 5.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
+
+
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'rails_admin_rollincode', '~> 1.0'
+
+
 # Use devise for user authorization
 gem 'devise'
 # Use Puma as the app server

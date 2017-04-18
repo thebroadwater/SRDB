@@ -1,7 +1,6 @@
 <%= render "shared/nav" %>
 
 <% if user_signed_in? %>
-  <% current_user.permission_level %>
   <%= link_to 'New person', new_person_path %>
 <% end %>
 
