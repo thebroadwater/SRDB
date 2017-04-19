@@ -26,8 +26,11 @@
                 image_tag(thumbnail, :alt => "Cover Image", :style => "width:50px")
               end %>
             </td>
-            <td><%= link_to source.sku, source_path(source) %></td>
-            <td><%= source.title %></td>
+            <td><%= source.sku %></td>
+            <td>
+              <%= link_to source.title, source_path(source) %><br/>
+              <small><%= source.notes %></small>
+            </td>
             <td>
               <%=
                 if source.edition.present?
