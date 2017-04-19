@@ -45,7 +45,7 @@ class SourcesController < ApplicationController
 
   private
     def source_params
-      params.require(:source).permit(:sku, :title, :edition, :publisher,
+      params.require(:source).permit(:sku, :title, :edition_id, :publisher_id,
         :publication_date, :game_date, :notes, :back_text, :image_addr)
     end
 

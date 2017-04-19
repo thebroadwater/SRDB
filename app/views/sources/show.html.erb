@@ -6,11 +6,16 @@
 
       <h3><%= @source.title %></h3>
       <p class="lead">
+        <%= if @source.edition
+          "#{@source.edition.name} Edition"
+        end
+        %><br>
+
         <%= if @source.publisher
           @source.publisher.name
         end
         %>
-        <%= @source.try(:sku) %>
+        <%= @source.try(:sku) %><br>
       </p>
 
       <dl>
