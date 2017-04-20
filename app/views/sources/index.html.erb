@@ -28,7 +28,13 @@
             </td>
             <td><%= source.sku %></td>
             <td>
-              <%= link_to source.title, source_path(source) %><br/>
+              <%= link_to source.title, source_path(source) %>
+              <small>
+                <%= if source.author.present?
+                    "by #{source.author}"
+                end %>
+              </small>
+              <br>
               <small><%= source.notes %></small>
             </td>
             <td>
