@@ -4,24 +4,51 @@ Rails.application.routes.draw do
   devise_for :users, :skip => [:registrations]
   # devise_for :users
 
-  resources :people do
-    resources :person_sources
-  end
+  # authenticate :user do
+  #   resources :fjords, only: [:new, :create, :edit, :update, :destroy]
+  # end
+  # resources :fjords, only: [:index, :show]
 
-  resources :sources
-
-  resources :locations do
-    resources :location_sources
+  authenticate :user do
+    resources :people, only: [:new, :create, :edit, :update, :destroy] do
+      resources :person_sources
+    end
   end
+  resources :people, only: [:index, :show]
 
-  resources :groups do
-    resources :group_sources
+  authenticate :user do
+    resources :sources, only: [:new, :create, :edit, :update, :destroy]
   end
+  resources :sources, only: [:index, :show]
 
-  resources :events
-  resources :occurrences do
-    resources :occurrence_sources
+  authenticate :user do
+    resources :locations, only: [:new, :create, :edit, :update, :destroy] do
+      resources :location_sources
+    end
   end
+  resources :locations, only: [:index, :show]
+
+
+  authenticate :user do
+    resources :groups, only: [:new, :create, :edit, :update, :destroy] do
+      resources :group_sources
+    end
+  end
+  resources :groups, only: [:index, :show]
+
+
+  authenticate :user do
+    resources :events, only: [:new, :create, :edit, :update, :destroy]
+  end
+  resources :events, only: [:index, :show]
+
+
+  authenticate :user do
+    resources :occurrences, only: [:new, :create, :edit, :update, :destroy] do
+      resources :occurrence_sources
+    end
+  end
+  resources :occurrences, only: [:index, :show]
 
   get 'welcome/index'
   root 'welcome#index'
