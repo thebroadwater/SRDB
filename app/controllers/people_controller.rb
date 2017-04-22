@@ -1,4 +1,7 @@
 class PeopleController < ApplicationController
+  
+  helper_method :sort_column, :sort_direction
+
   def new
     @person = Person.new
   end
@@ -14,7 +17,7 @@ class PeopleController < ApplicationController
   end
 
   def index
-    @people = Person.order(:name).page(params[:page])
+    @people = Person.order(sort_column + ' ' + sort_direction).page(params[:page])
   end
 
   def show
@@ -44,8 +47,16 @@ class PeopleController < ApplicationController
 
   private
     def person_params
-      params.require(:person).permit(:name, :BLUF, :metatype, :affiliation,
+      params.require(:person).permit(:name, :bluf, :metatype, :affiliation,
         :description, :notes, :active)
+    end
+
+    def sort_column
+      Person.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
     end
 
 end

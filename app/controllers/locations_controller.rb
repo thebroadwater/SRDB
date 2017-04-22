@@ -1,4 +1,7 @@
 class LocationsController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+
   def new
     @location = Location.new
   end
@@ -14,7 +17,7 @@ class LocationsController < ApplicationController
   end
 
   def index
-    @locations = Location.order(:name).all.page(params[:page])
+    @locations = Location.order(sort_column + ' ' + sort_direction).all.page(params[:page])
   end
 
   def show
@@ -46,5 +49,13 @@ class LocationsController < ApplicationController
     def location_params
       params.require(:location).permit(:name, :description, :kind, :address,
         :city, :country, :notes)
+    end
+
+    def sort_column
+      Location.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
     end
 end

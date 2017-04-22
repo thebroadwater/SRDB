@@ -1,4 +1,7 @@
 class GroupsController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+
   def new
     @group = Group.new
   end
@@ -14,7 +17,7 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.order(:name).all.page(params[:page])
+    @groups = Group.order(sort_column + ' ' + sort_direction).all.page(params[:page])
   end
 
   def show
@@ -47,5 +50,11 @@ class GroupsController < ApplicationController
       params.require(:group).permit(:name, :kind, :subtype, :notes)
     end
 
+    def sort_column
+      Group.column_names.include?(params[:sort]) ? params[:sort] : "name"
+    end
 
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+    end
 end

@@ -10,8 +10,8 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>BLUF</th>
+            <th><%= sortable "name" %></th>
+            <th><%= sortable "bluf", "BLUF" %></th>
           </tr>
         </thead>
         <tbody>
@@ -21,7 +21,7 @@
             <td>
               <%= link_to person.name, person_path(person) %>
             </td>
-            <td><%= person.BLUF %></td>
+            <td><%= person.bluf %></td>
 
             <% if user_signed_in? %>
               <td>

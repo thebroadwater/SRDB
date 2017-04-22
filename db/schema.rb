@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418015312) do
+ActiveRecord::Schema.define(version: 20170422205248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20170418015312) do
     t.text "description"
     t.text "notes"
     t.text "metatype"
-    t.text "BLUF"
+    t.text "bluf"
     t.text "active"
   end
 

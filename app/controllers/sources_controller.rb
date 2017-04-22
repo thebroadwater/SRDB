@@ -1,4 +1,7 @@
 class SourcesController < ApplicationController
+
+  helper_method :sort_column, :sort_direction
+
   def new
     @source = Source.new
   end
@@ -14,7 +17,7 @@ class SourcesController < ApplicationController
   end
 
   def index
-    @sources = Source.all.order("edition_id ASC, SKU ASC").page(params[:page])
+    @sources = Source.all.order(sort_column + ' ' + sort_direction).page(params[:page])
   end
 
   def show
@@ -49,4 +52,11 @@ class SourcesController < ApplicationController
         :isbn10, :isbn13, :author)
     end
 
+    def sort_column
+      Source.column_names.include?(params[:sort]) ? params[:sort] : "title"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+    end
 end
