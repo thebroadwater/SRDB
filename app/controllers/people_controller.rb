@@ -14,7 +14,7 @@ class PeopleController < ApplicationController
   end
 
   def index
-    @people = Person.order(:name).all
+    @people = Person.order(:name).page(params[:page])
   end
 
   def show

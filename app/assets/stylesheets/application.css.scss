@@ -1,7 +1,6 @@
-@import "bootstrap-sprockets"
-@import "bootstrap-grid"
-@import "bootstrap"
-@import "custom"
+@import "bootstrap-grid";
+@import "bootstrap";
+@import "custom";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -14,7 +13,4 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
- *= require bootstrap.min
  */

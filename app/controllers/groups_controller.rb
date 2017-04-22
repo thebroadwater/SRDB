@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.order(:name).all
+    @groups = Group.order(:name).all.page(params[:page])
   end
 
   def show

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users, :skip => [:registrations]
-  # devise_for :users
+  # devise_for :users, :skip => [:registrations]
+  devise_for :users
 
   # authenticate :user do
   #   resources :fjords, only: [:new, :create, :edit, :update, :destroy]

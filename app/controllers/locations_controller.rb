@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
   end
 
   def index
-    @locations = Location.order(:name).all
+    @locations = Location.order(:name).all.page(params[:page])
   end
 
   def show

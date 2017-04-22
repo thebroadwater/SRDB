@@ -14,8 +14,7 @@ class SourcesController < ApplicationController
   end
 
   def index
-    @sources = Source.order(:title).all
-    # @sources = Source.all.order("edition_id ASC, SKU ASC")
+    @sources = Source.all.order("edition_id ASC, SKU ASC").page(params[:page])
   end
 
   def show
