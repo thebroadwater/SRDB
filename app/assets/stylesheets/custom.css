@@ -50,3 +50,7 @@
     height: 1%; }
   *:first-child + html .srdb_pagination {
     overflow: hidden; }
+
+.table {
+  font-size: 90%;
+}
