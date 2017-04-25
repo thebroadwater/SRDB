@@ -17,14 +17,15 @@
             <%= link_to occurrence_source.source.title,"/sources/#{occurrence_source.source.id}" %>
             p.
             <%= occurrence_source.pages %>
-            <%=
-              link_to "Delete",
-              "#{occurrence_path(occurrence_source.occurrence_id)}/occurrence_sources/#{occurrence_source.id}",
-              :class => "btn btn-danger btn-xs",
-              :role=> "button",
-              method: :delete,
-              data: { confirm: 'Are you sure?' }
-            %>
+            <% if user_signed_in? %>
+              <%= link_to "Delete",
+                "#{occurrence_path(occurrence_source.occurrence_id)}/occurrence_sources/#{occurrence_source.id}",
+                :class => "btn btn-danger btn-xs",
+                :role=> "button",
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+              %>
+            <% end %>
           </li>
         <% end %>
       </ul>
