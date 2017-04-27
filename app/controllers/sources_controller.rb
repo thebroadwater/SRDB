@@ -49,7 +49,7 @@ class SourcesController < ApplicationController
     def source_params
       params.require(:source).permit(:sku, :title, :edition_id, :publisher_id,
         :publication_date, :game_date, :notes, :back_text, :image_addr,
-        :isbn10, :isbn13, :author)
+        :isbn10, :isbn13, :author, :updated_at)
     end
 
     def sort_column
