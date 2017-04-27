@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   end
   resources :occurrences, only: [:index, :show]
 
-  get 'welcome/index'
-  root 'welcome#index'
+  get 'root/index'
+  root 'root#index'
+
 end
