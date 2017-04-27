@@ -18,7 +18,7 @@ class OccurrencesController < ApplicationController
   end
 
   def index
-    @occurrences = Occurrence.order(:date).all
+    @occurrences = Occurrence.order(:date, :id).all
   end
 
   def show
