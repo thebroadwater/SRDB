@@ -23,11 +23,6 @@
               <%= occurrence.details %>
 
               <% @occurrence = Occurrence.find(occurrence.id) %>
-
-                <% iSourceCount = 1
-                  @occurrence.occurrence_sources.each do |occurrence_source| %>
-                <% end %>
-
             </dd>
           </dl>
         <% end %>
