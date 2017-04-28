@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-md-10 view-template">
-      <p class="lead"><%= @occurrence.date %></p>
+      <p class="lead"><%= @occurrence.date.to_formatted_s(:rfc822) %></p>
 
       <dl>
         <dt>Details</dt> <dd><%= @occurrence.details %></dd>
