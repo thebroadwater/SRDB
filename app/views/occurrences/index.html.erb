@@ -6,24 +6,23 @@
 <% end %>
 
 <% previous_date = Date.today %>
-<% current_year = Date.today.year %>
-<% first_loop = true %>
+<% current_year = 1970 %>
 
 <% @occurrences.each do |occurrence| %>
 
   <% if current_year != occurrence.date.year %>
 
-    <% if first_loop %>
       </div>
     </div>
   </div>
-    <% end %>
+
 
   <div class="container-fluid">
-
+    <h2 data-toggle="collapse" data-target='#<%= occurrence.date.year %>'>
+      <%= current_year = occurrence.date.year %>
+    </h2>
     <div class="row justify-content-center">
-      <h2><%= current_year = occurrence.date.year %></h2>
-      <div class="col-md-10">
+      <div class="col-md-10 collapse show" id='<%=occurrence.date.year %>'>
 
   <% end %>
 
