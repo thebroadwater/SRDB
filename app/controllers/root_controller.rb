@@ -3,12 +3,12 @@ class RootController < ApplicationController
   end
 
   def sitemap
-    @people = Person.all
-    @groups = Group.all
-    @locations = Location.all
-    @events = Event.all
-    @occurrences = Occurrence.all
-    @sources = Source.all
+    # @people = Person.all
+    # @groups = Group.all
+    # @locations = Location.all
+    # @events = Event.all
+    # @occurrences = Occurrence.all
+    # @sources = Source.all
     respond_to do |format|
       format.xml
     end
