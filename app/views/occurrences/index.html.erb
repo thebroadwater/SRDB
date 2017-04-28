@@ -5,28 +5,45 @@
   <%= link_to 'New occurrence', new_occurrence_path %>
 <% end %>
 
-<% previous_date = DateTime.now %>
+<% previous_date = Date.today %>
+<% current_year = Date.today.year %>
+<% first_loop = true %>
 
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-md-10">
-        <% @occurrences.each do |occurrence| %>
-          <dl>
-            <% if previous_date != occurrence.date %>
-            <dt>
-              <%= occurrence.date.to_formatted_s(:rfc822) %>
-            </dt>
-            <% end %>
-            <% previous_date = occurrence.date %>
-            <dd>
-              <%= link_to '&bull;'.html_safe, occurrence_path(occurrence) %>
-              <%= occurrence.details %>
+<% @occurrences.each do |occurrence| %>
 
-              <% @occurrence = Occurrence.find(occurrence.id) %>
-            </dd>
-          </dl>
-        <% end %>
+  <% if current_year != occurrence.date.year %>
 
+    <% if first_loop %>
+      </div>
     </div>
   </div>
-</div>
+    <% end %>
+
+  <div class="container-fluid">
+
+    <div class="row justify-content-center">
+      <h2><%= current_year = occurrence.date.year %></h2>
+      <div class="col-md-10">
+
+  <% end %>
+
+        <dl>
+          <% if previous_date != occurrence.date %>
+          <dt>
+            <%= occurrence.date.to_formatted_s(:rfc822) %>
+          </dt>
+          <% end %>
+          <% previous_date = occurrence.date %>
+          <dd>
+            <%= link_to '&bull;'.html_safe, occurrence_path(occurrence) %>
+            <%= occurrence.details %>
+
+            <% @occurrence = Occurrence.find(occurrence.id) %>
+          </dd>
+        </dl>
+
+<% end %>
+
+      </div>
+    </div>
+  </div>
