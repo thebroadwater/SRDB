@@ -50,4 +50,6 @@ Rails.application.routes.draw do
 
   get 'sitemap', to: 'root#sitemap'
 
+get '/timeline', to: redirect('/occurrences')
+
 end
