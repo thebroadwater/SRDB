@@ -1,8 +1,8 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="The Shadowrun Database">
 <meta name="twitter:url" content="http://shadowrundb.com/occurrences/<%= @occurrence.id %>">
-<meta name="twitter:title" content="<%= @occurrence..date.to_formatted_s(:rfc822) %>">
-<meta name="twitter:description" content="<%= @occurrence..date.to_formatted_s(:rfc822) %>">
+<meta name="twitter:title" content="<%= @occurrence.date.to_formatted_s(:rfc822) %>">
+<meta name="twitter:description" content="<%= @occurrence.date.to_formatted_s(:rfc822) %>">
 
 <% content_for :title, @occurrence.date %>
 <%= render "shared/nav" %>
