@@ -70,6 +70,7 @@ end
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'tether-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
