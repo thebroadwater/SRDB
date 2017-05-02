@@ -1,3 +1,9 @@
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="The Shadowrun Database">
+<meta name="twitter:url" content="http://shadowrundb.com/people/<%= @person.id %>">
+<meta name="twitter:title" content="<%= @person.name %>">
+<meta name="twitter:description" content="<%= @person.bluf %>">
+
 <% content_for :title, @person.name %>
 
 <%= render "shared/nav" %>
