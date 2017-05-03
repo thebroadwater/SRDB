@@ -9,10 +9,27 @@
 <% current_year = 1970 %>
 <% first_pass = true %>
 
-<!--
-<br/><%= first_dec = (@occurrences.first.date.year / 10).floor * 10 %>
-<br/><%= last_dec = (@occurrences.last.date.year / 10).floor * 10 %>
--->
+
+<%
+  decade = (@occurrences.first.date.year / 10).floor * 10
+  last_decade = (@occurrences.last.date.year / 10).floor * 10
+  range = (last_decade - decade ) / 10 + 1
+%>
+
+<div class="container">
+  <div class="row justify-content-end">
+    <div class="col-md-1 bg-faded">
+      <div class="list-group">
+
+      <% range.times do %>
+        <a href="#<%= decade %>"><%= decade %></a>
+        <% decade = decade + 10 %>
+      <% end %>
+
+      </ul>
+    </div>
+  </div>
+</div>
 
 <% @occurrences.each do |occurrence| %>
 
