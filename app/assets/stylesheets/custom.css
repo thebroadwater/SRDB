@@ -54,3 +54,9 @@
 .table {
   font-size: 90%;
 }
+
+:target::before {
+  content:"";
+  display:block;
+  height:60px; /* fixed header height*/
+}

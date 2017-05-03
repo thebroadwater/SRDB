@@ -7,22 +7,33 @@
 
 <% previous_date = Date.today %>
 <% current_year = 1970 %>
+<% first_pass = true %>
+
+<!--
+<br/><%= first_dec = (@occurrences.first.date.year / 10).floor * 10 %>
+<br/><%= last_dec = (@occurrences.last.date.year / 10).floor * 10 %>
+-->
 
 <% @occurrences.each do |occurrence| %>
 
   <% if current_year != occurrence.date.year %>
 
+    <% if first_pass %>
+      <% first_pass = false %>
+    <% else %>
+
       </div>
     </div>
   </div>
 
+    <% end %>
 
-  <div class="container-fluid">
-    <h2 data-toggle="collapse" data-target='#<%= occurrence.date.year %>'>
+  <div id='<%=occurrence.date.year %>' class="container-fluid">
+    <h2 data-toggle="collapse" data-target='#<%= occurrence.date.year %>_info'>
       <%= current_year = occurrence.date.year %>
     </h2>
     <div class="row justify-content-center">
-      <div class="col-md-10 collapse show" id='<%=occurrence.date.year %>'>
+      <div class="col-md-10 collapse show" id='<%=occurrence.date.year %>_info'>
 
   <% end %>
 
