@@ -60,3 +60,7 @@
   display:block;
   height:60px; /* fixed header height*/
 }
+
+.list-inline {
+  white-space:nowrap;
+}

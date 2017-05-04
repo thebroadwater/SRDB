@@ -16,20 +16,11 @@
   range = (last_decade - decade ) / 10 + 1
 %>
 
-<div class="container">
-  <div class="row justify-content-end">
-    <div class="col-md-1 bg-faded">
-      <div class="list-group">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-11">
 
-      <% range.times do %>
-        <a href="#<%= decade %>"><%= decade %></a>
-        <% decade = decade + 10 %>
-      <% end %>
 
-      </div>
-    </div>
-  </div>
-</div>
 
 <% @occurrences.each do |occurrence| %>
 
@@ -74,3 +65,15 @@
       </div>
     </div>
   </div>
+</div>
+<div class="col-md-1" style="position:fixed; right: 10px; top: 60px;">
+  <div class="list-group text-center bg-faded">
+    Timeline
+
+  <% range.times do %>
+    <a href="#<%= decade %>"><%= decade %></a>
+    <% decade = decade + 10 %>
+  <% end %>
+
+  </div>
+</div>
