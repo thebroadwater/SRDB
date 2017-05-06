@@ -23,7 +23,19 @@
 
       <ul>
         <% @group.group_sources.each do |group_source| %>
-          <li><%= group_source.source.title %> p. <%= group_source.pages %></li>
+          <li>
+            <%= group_source.source.title %> p. <%= group_source.pages %>
+            <% if user_signed_in? %>
+              <%= link_to "Delete",
+                "#{group_path(group_source.occurrence_id)}/group_sources/#{group_source.id}",
+                :class => "btn btn-danger btn-xs",
+                :role=> "button",
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+              %>
+            <% end %>
+
+          </li>
         <% end %>
       </ul>
 

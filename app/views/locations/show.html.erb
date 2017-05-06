@@ -30,7 +30,19 @@
 
       <ul>
         <% @location.location_sources.each do |location_source| %>
-          <li><%= location_source.source.title %> p. <%= location_source.pages %></li>
+          <li>
+            <%= location_source.source.title %> p. <%= location_source.pages %>
+            <% if user_signed_in? %>
+              <%= link_to "Delete",
+                "#{location_path(location_source.location_id)}/location_sources/#{location_source.id}",
+                :class => "btn btn-danger btn-xs",
+                :role=> "button",
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+              %>
+            <% end %>
+
+          </li>
         <% end %>
       </ul>
 

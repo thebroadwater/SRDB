@@ -27,8 +27,21 @@
 
       <ul>
         <% @person.person_sources.each do |person_source| %>
-          <li><%= person_source.source.title %> p. <%= person_source.pages %></li>
+          <li>
+            <%= person_source.source.title %> p. <%= person_source.pages %>
+            <% if user_signed_in? %>
+              <%= link_to "Delete",
+                "#{person_path(person_source.person_id)}/person_sources/#{person_source.id}",
+                :class => "btn btn-danger btn-xs",
+                :role=> "button",
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+              %>
+            <% end %>
+          </li>
+
         <% end %>
+
       </ul>
 
       <% if user_signed_in? %>
