@@ -14,6 +14,8 @@ class SourcesController < ApplicationController
     else
       render 'new'
     end
+
+    # Source.reindex
   end
 
   def index
@@ -36,6 +38,8 @@ class SourcesController < ApplicationController
     else
       render 'edit'
     end
+
+    # Source.reindex
   end
 
   def destroy

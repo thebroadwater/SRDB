@@ -15,7 +15,7 @@ class PeopleController < ApplicationController
       render 'new'
     end
 
-    Person.reindex
+    # Person.reindex
   end
 
   def index
@@ -39,7 +39,7 @@ class PeopleController < ApplicationController
       render 'edit'
     end
 
-    Person.reindex
+    # Person.reindex
   end
 
   def destroy
