@@ -12,6 +12,8 @@ Found <%= @results.total_count %> results in <%= @results.took %> ms.<br/><br/>
     <%= render partial: "location", locals: {result: result} %>
   <% elsif result.class.to_s == "Occurrence" %>
     <%= render partial: "occurrence", locals: {result: result} %>
+  <% elsif result.class.to_s == "Source" %>
+    <%= render partial: "source", locals: {result: result} %>
   <% end %>
   <br/><br/>
 <% end %>
