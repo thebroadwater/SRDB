@@ -15,6 +15,8 @@ class OccurrencesController < ApplicationController
     else
       render 'new'
     end
+
+    Occurrence.reindex
   end
 
   def index
@@ -37,6 +39,8 @@ class OccurrencesController < ApplicationController
     else
       render 'edit'
     end
+
+    Occurrence.reindex
   end
 
   def destroy

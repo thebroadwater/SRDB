@@ -14,6 +14,8 @@ class GroupsController < ApplicationController
     else
       render 'new'
     end
+
+    Group.reindex
   end
 
   def index
@@ -36,6 +38,8 @@ class GroupsController < ApplicationController
     else
       render 'edit'
     end
+
+    Group.reindex
   end
 
   def destroy

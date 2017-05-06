@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  
+
   helper_method :sort_column, :sort_direction
 
   def new
@@ -14,6 +14,8 @@ class PeopleController < ApplicationController
     else
       render 'new'
     end
+
+    Person.reindex
   end
 
   def index
@@ -36,6 +38,8 @@ class PeopleController < ApplicationController
     else
       render 'edit'
     end
+
+    Person.reindex
   end
 
   def destroy

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   end
   resources :events, only: [:index, :show]
 
+  resources :results, only: [:index]
 
   authenticate :user do
     resources :occurrences, only: [:new, :create, :edit, :update, :destroy] do

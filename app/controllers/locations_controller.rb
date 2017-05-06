@@ -14,6 +14,8 @@ class LocationsController < ApplicationController
     else
       render 'new'
     end
+
+    Location.reindex
   end
 
   def index
@@ -36,6 +38,8 @@ class LocationsController < ApplicationController
     else
       render 'edit'
     end
+
+    Location.reindex
   end
 
   def destroy

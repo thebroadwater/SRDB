@@ -1,0 +1,17 @@
+<% content_for :title, "Shadowrun Database Search" %>
+<%= render "shared/nav" %>
+
+Found <%= @results.total_count %> results in <%= @results.took %> ms.<br/><br/>
+
+<% @results.each do |result| %>
+  <% if result.class.to_s == "Person" %>
+    <%= render partial: "person", locals: {result: result} %>
+  <% elsif result.class.to_s == "Group" %>
+    <%= render partial: "group", locals: {result: result} %>
+  <% elsif result.class.to_s == "Location" %>
+    <%= render partial: "location", locals: {result: result} %>
+  <% elsif result.class.to_s == "Occurrence" %>
+    <%= render partial: "occurrence", locals: {result: result} %>
+  <% end %>
+  <br/><br/>
+<% end %>

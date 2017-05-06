@@ -55,12 +55,12 @@
   font-size: 90%;
 }
 
+.list-inline {
+  white-space:nowrap;
+}
+
 :target::before {
   content:"";
   display:block;
-  height:60px; /* fixed header height*/
-}
-
-.list-inline {
-  white-space:nowrap;
+  height:60px;
 }

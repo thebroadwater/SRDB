@@ -36,12 +36,12 @@
 
     <% end %>
 
-  <div id='<%=occurrence.date.year %>' class="container-fluid">
-    <h2 data-toggle="collapse" data-target='#<%= occurrence.date.year %>_info'>
+  <div id='year-<%=occurrence.date.year %>' class="container-fluid">
+    <h2 data-toggle="collapse" data-target='#info-<%= occurrence.date.year %>'>
       <%= current_year = occurrence.date.year %>
     </h2>
     <div class="row justify-content-center">
-      <div class="col-md-10 collapse show" id='<%=occurrence.date.year %>_info'>
+      <div class="col-md-10 collapse show" id='info-<%=occurrence.date.year %>'>
 
   <% end %>
 
@@ -71,7 +71,7 @@
     Timeline
 
   <% range.times do %>
-    <a href="#<%= decade %>"><%= decade %></a>
+    <a href="/occurrences/#year-<%= decade %>"><%= decade %></a>
     <% decade = decade + 10 %>
   <% end %>
 
