@@ -7,6 +7,15 @@ class ResultsController < ApplicationController
   def index
     @results = Searchkick.search params[:search],
       index_name: [Occurrence, Person, Location, Group, Source],
-      misspellings: {below: 2}
+      fields: ["name^10", "title^10", "type^5", "subtype^2", "details",],
+      misspellings: {below: 2},
+      highlight: {
+        tag: "<strong>",
+        fields: {
+          details: {
+            fragment_size: 100
+          }
+        }
+      }
   end
 end

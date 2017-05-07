@@ -1,1 +1,11 @@
-Book: <%= link_to result.sku, source_path(result.id) %> <%= result.title %>
+<div>
+  <p class="h5"><%= link_to result.title, source_path(result.id) %></p>
+  <p>
+    <%= if result.edition
+      "#{result.edition.name} Edition book"
+    end %>
+    <%= if result.publisher
+      "published by #{result.publisher.name}"
+    end %>
+  </p>
+</div>
