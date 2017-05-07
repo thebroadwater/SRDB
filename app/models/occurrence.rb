@@ -3,5 +3,6 @@ class Occurrence < ApplicationRecord
   has_many :events, through: :incidents
   has_many :occurrence_sources
 
-  searchkick highlight: [:details]
+  searchkick highlight: [:details, :date]
+  # word_middle: [:details, :date]
 end

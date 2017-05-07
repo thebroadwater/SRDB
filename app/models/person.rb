@@ -3,5 +3,6 @@ class Person < ApplicationRecord
   has_many :person_tags
   has_many :tags, through: :person_tags
 
-  searchkick
+  searchkick highlight: [:name, :metatype, :affiliation, :bluf, :description, :notes]
+    # word_start: [:name, :metatype, :affiliation, :bluf, :description, :notes]
 end
