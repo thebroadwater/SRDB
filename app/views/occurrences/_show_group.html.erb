@@ -1,0 +1,19 @@
+<strong>Groups mentioned in this item:</strong><br>
+<ul>
+  <% @occurrence.occurrence_groups.each do |occurrence_group| %>
+    <li>
+      <%= link_to occurrence_group.source.name,"/groups/#{occurrence_group.source.id}" %>
+      p.
+      <%= occurrence_group.pages %>
+      <% if user_signed_in? %>
+        <%= link_to "Delete",
+          "#{occurrence_path(occurrence_group.occurrence_id)}/occurrence_group/#{occurrence_group.id}",
+          :class => "btn btn-danger btn-xs",
+          :role=> "button",
+          method: :delete,
+          data: { confirm: 'Are you sure?' }
+        %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

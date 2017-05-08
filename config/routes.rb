@@ -42,6 +42,9 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :occurrences, only: [:new, :create, :edit, :update, :destroy] do
       resources :occurrence_sources
+      resources :occurrence_people
+      resources :occurrence_groups
+      resources :occurrence_locations
     end
   end
   resources :occurrences, only: [:index, :show]

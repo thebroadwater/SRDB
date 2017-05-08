@@ -27,6 +27,16 @@
         <%= @location.city %>, <%= @location.country %><br>
       </address>
 
+      <% if @location.occurrence_locations.exists? %>
+        <strong>Mentioned in these events:</strong><br>
+        <ul>
+          <% @location.occurrence_locations.each do |occurrence_location| %>
+            <%= link_to occurrence_location.occurrence.date,"/groups/#{occurrence_location.occurrence.id}" %><br/>
+            <%= occurrence_location.occurrence.details %>
+          <% end %>
+        </ul>
+      <% end %>
+
       <strong>Sources</strong>
 
       <ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508132510) do
+ActiveRecord::Schema.define(version: 20170508175041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,33 @@ ActiveRecord::Schema.define(version: 20170508132510) do
     t.text     "notes"
     t.datetime "updated_at"
     t.text     "summary"
+  end
+
+  create_table "occurrence_groups", id: :integer, default: -> { "nextval('occurrence_groups_id_seq1'::regclass)" }, force: :cascade do |t|
+    t.integer  "occurrence_id"
+    t.integer  "group_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["group_id"], name: "index_occurrence_groups_on_group_id", using: :btree
+    t.index ["occurrence_id"], name: "index_occurrence_groups_on_occurrence_id", using: :btree
+  end
+
+  create_table "occurrence_locations", id: :integer, default: -> { "nextval('occurrence_locations_id_seq1'::regclass)" }, force: :cascade do |t|
+    t.integer  "occurrence_id"
+    t.integer  "location_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["location_id"], name: "index_occurrence_locations_on_location_id", using: :btree
+    t.index ["occurrence_id"], name: "index_occurrence_locations_on_occurrence_id", using: :btree
+  end
+
+  create_table "occurrence_people", id: :integer, default: -> { "nextval('occurrence_people_id_seq1'::regclass)" }, force: :cascade do |t|
+    t.integer  "occurrence_id"
+    t.integer  "person_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["occurrence_id"], name: "index_occurrence_people_on_occurrence_id", using: :btree
+    t.index ["person_id"], name: "index_occurrence_people_on_person_id", using: :btree
   end
 
   create_table "occurrence_sources", id: :integer, default: -> { "nextval('occurrence_sources_id_seq1'::regclass)" }, force: :cascade do |t|
@@ -178,6 +205,12 @@ ActiveRecord::Schema.define(version: 20170508132510) do
   add_foreign_key "location_sources", "sources", name: "location_references_book_fkey"
   add_foreign_key "location_tags", "locations", name: "location_tags_location_id_fkey"
   add_foreign_key "location_tags", "tags", name: "location_tags_tag_id_fkey"
+  add_foreign_key "occurrence_groups", "groups"
+  add_foreign_key "occurrence_groups", "occurrences"
+  add_foreign_key "occurrence_locations", "locations"
+  add_foreign_key "occurrence_locations", "occurrences"
+  add_foreign_key "occurrence_people", "occurrences"
+  add_foreign_key "occurrence_people", "people"
   add_foreign_key "person_sources", "people", name: "people_references_referrer_fkey"
   add_foreign_key "person_sources", "sources", name: "people_references_book_fkey"
   add_foreign_key "person_tags", "people", name: "people_tags_person_id_fkey"

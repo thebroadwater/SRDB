@@ -1,0 +1,7 @@
+<strong>Add a person:</strong>
+
+  <%= form_for([@occurrence, @occurrence.occurrence_people.build]) do |f| %>
+    <%= f.collection_select(:person_id, Person.order(:name).all, :id, :name) %>
+    <%= f.submit "Add"%>
+  <% end %>
+<br>

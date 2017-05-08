@@ -1,0 +1,17 @@
+<strong>People mentioned in this item:</strong><br>
+<ul>
+  <% @occurrence.occurrence_people.each do |occurrence_people| %>
+    <li>
+      <%= link_to occurrence_people.person.name,"/people/#{occurrence_people.person.id}" %>
+      <% if user_signed_in? %>
+        <%= link_to "Delete",
+          "#{occurrence_path(occurrence_people.occurrence_id)}/occurrence_people/#{occurrence_people.id}",
+          :class => "btn btn-danger btn-xs",
+          :role=> "button",
+          method: :delete,
+          data: { confirm: 'Are you sure?' }
+        %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

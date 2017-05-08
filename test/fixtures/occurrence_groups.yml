@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  occurrence: one
+  group: one
+
+two:
+  occurrence: two
+  group: two

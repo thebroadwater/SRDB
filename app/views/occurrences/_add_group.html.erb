@@ -1,0 +1,7 @@
+<strong>Add a group:</strong>
+
+  <%= form_for([@occurrence, @occurrence.occurrence_groups.build]) do |f| %>
+    <%= f.collection_select(:group_id, Group.order(:name).all, :id, :name) %>
+    <%= f.submit "Add"%>
+  <% end %>
+<br>

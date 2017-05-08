@@ -19,6 +19,16 @@
         <dt>Notes</dt> <dd><%= @group.notes %></dd>
       </dl>
 
+      <% if @group.occurrence_groups.exists? %>
+        <strong>Mentioned in these events:</strong><br>
+        <ul>
+          <% @group.occurrence_groups.each do |occurrence_group| %>
+            <%= link_to occurrence_group.occurrence.date,"/groups/#{occurrence_group.occurrence.id}" %><br/>
+            <%= occurrence_group.occurrence.details %>
+          <% end %>
+        </ul>
+      <% end %>
+
       <strong>Sources</strong>
 
       <ul>
