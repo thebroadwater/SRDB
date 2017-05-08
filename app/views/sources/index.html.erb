@@ -13,7 +13,7 @@
           <tr>
             <th></th>
             <th><%= sortable "sku", "SKU" %></th>
-            <th><%= sortable "title" %></th>
+            <th><%= sortable "name", "Title" %></th>
             <th><%= sortable "edition_id", "Edition" %></th>
           </tr>
         </thead>
@@ -29,7 +29,7 @@
             </td>
             <td><%= source.sku %></td>
             <td>
-              <%= link_to source.title, source_path(source) %>
+              <%= link_to source.name, source_path(source) %>
               <small>
                 <%= if source.author.present?
                     "by #{source.author}"

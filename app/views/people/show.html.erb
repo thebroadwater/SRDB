@@ -2,7 +2,7 @@
 <meta name="twitter:site" content="The Shadowrun Database">
 <meta name="twitter:url" content="http://shadowrundb.com/people/<%= @person.id %>">
 <meta name="twitter:title" content="<%= @person.name %>">
-<meta name="twitter:description" content="<%= @person.bluf %>">
+<meta name="twitter:description" content="<%= @person.summary %>">
 
 <% content_for :title, @person.name %>
 
@@ -13,11 +13,11 @@
     <div class="col-md-10 view-template">
 
       <h3><%= @person.name %></h3>
-      <p class="lead"><%= @person.bluf %></p>
+      <p class="lead"><%= @person.summary %></p>
 
       <dl>
         <dt>Affiliation</dt> <dd><%= @person.affiliation %></dd>
-        <dt>Description</dt> <dd><%= @person.description %></dd>
+        <dt>Details</dt> <dd><%= @person.details %></dd>
         <dt>Notes</dt> <dd><%= @person.notes %></dd>
         <dt>Active</dt> <dd><%= @person.active %></dd>
         <dt>Metatype</dt> <dd><%= @person.metatype %></dd>
@@ -28,7 +28,7 @@
       <ul>
         <% @person.person_sources.each do |person_source| %>
           <li>
-            <%= person_source.source.title %> p. <%= person_source.pages %>
+            <%= person_source.source.name %> p. <%= person_source.pages %>
             <% if user_signed_in? %>
               <%= link_to "Delete",
                 "#{person_path(person_source.person_id)}/person_sources/#{person_source.id}",

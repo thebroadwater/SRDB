@@ -51,13 +51,13 @@ class SourcesController < ApplicationController
 
   private
     def source_params
-      params.require(:source).permit(:sku, :title, :edition_id, :publisher_id,
+      params.require(:source).permit(:sku, :name, :edition_id, :publisher_id,
         :publication_date, :game_date, :notes, :back_text, :image_addr,
         :isbn10, :isbn13, :author, :updated_at)
     end
 
     def sort_column
-      Source.column_names.include?(params[:sort]) ? params[:sort] : "title"
+      Source.column_names.include?(params[:sort]) ? params[:sort] : "name"
     end
 
     def sort_direction

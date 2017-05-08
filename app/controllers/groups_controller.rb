@@ -51,7 +51,7 @@ class GroupsController < ApplicationController
 
   private
     def groups_params
-      params.require(:group).permit(:name, :kind, :subtype, :notes)
+      params.require(:group).permit(:name, :summary, :details, :kind, :subtype, :notes)
     end
 
     def sort_column

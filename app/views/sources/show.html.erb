@@ -1,19 +1,19 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="The Shadowrun Database">
 <meta name="twitter:url" content="http://shadowrundb.com/sources/<%= @source.id %>">
-<meta name="twitter:title" content="<%= @source.title %>">
-<meta name="twitter:description" content="<%= @source.title %>">
+<meta name="twitter:title" content="<%= @source.name %>">
+<meta name="twitter:description" content="<%= @source.name %>">
 <meta name="twitter:image" content="<%= @source.image_addr %>">
 
 
-<% content_for :title, @source.title %>
+<% content_for :name, @source.name %>
 <%= render "shared/nav" %>
 
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-md-10 view-template">
 
-      <h3><%= @source.title %></h3>
+      <h3><%= @source.name %></h3>
       <p class="lead">
         <%= @source.author %><br>
 
@@ -69,7 +69,7 @@
             </div>
           </div>
         </dd>
-        <dt>Back Cover Text</dt> <dd><%= simple_format(@source.try(:back_text)) %></dd>
+        <dt>Back Cover Text</dt> <dd><%= simple_format(@source.try(:details)) %></dd>
       </dl>
 
     </div>

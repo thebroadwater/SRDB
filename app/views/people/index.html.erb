@@ -12,7 +12,7 @@
         <thead>
           <tr>
             <th><%= sortable "name" %></th>
-            <th><%= sortable "bluf", "BLUF" %></th>
+            <th><%= sortable "summary", "Summary" %></th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
             <td>
               <%= link_to person.name, person_path(person) %>
             </td>
-            <td><%= person.bluf %></td>
+            <td><%= person.summary %></td>
 
             <% if user_signed_in? %>
               <td>

@@ -21,7 +21,7 @@
       <ul>
         <% @occurrence.occurrence_sources.each do |occurrence_source| %>
           <li>
-            <%= link_to occurrence_source.source.title,"/sources/#{occurrence_source.source.id}" %>
+            <%= link_to occurrence_source.source.name,"/sources/#{occurrence_source.source.id}" %>
             p.
             <%= occurrence_source.pages %>
             <% if user_signed_in? %>

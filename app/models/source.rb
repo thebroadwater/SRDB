@@ -5,6 +5,6 @@ class Source < ApplicationRecord
   belongs_to :publisher
   belongs_to :edition
 
-  searchkick highlight: [:title, :back_text]
-  #  word_start: [:title, :back_text]
+  searchkick highlight: [:name, :details]
+  #  word_start: [:name, :details]
 end

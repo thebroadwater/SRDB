@@ -51,8 +51,8 @@ class PeopleController < ApplicationController
 
   private
     def person_params
-      params.require(:person).permit(:name, :bluf, :metatype, :affiliation,
-        :description, :notes, :active)
+      params.require(:person).permit(:name, :summary, :metatype, :affiliation,
+        :details, :notes, :active)
     end
 
     def sort_column

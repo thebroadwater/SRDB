@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427183106) do
+ActiveRecord::Schema.define(version: 20170508132510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20170427183106) do
     t.text     "notes"
     t.text     "subtype"
     t.datetime "updated_at"
+    t.text     "summary"
+    t.text     "details"
   end
 
   create_table "incidents", force: :cascade do |t|
@@ -73,13 +75,14 @@ ActiveRecord::Schema.define(version: 20170427183106) do
 
   create_table "locations", force: :cascade do |t|
     t.text     "name"
-    t.text     "description"
+    t.text     "details"
     t.text     "kind"
     t.text     "address"
     t.text     "city"
     t.text     "country"
     t.text     "notes"
     t.datetime "updated_at"
+    t.text     "summary"
   end
 
   create_table "occurrence_sources", id: :integer, default: -> { "nextval('occurrence_sources_id_seq1'::regclass)" }, force: :cascade do |t|
@@ -97,10 +100,10 @@ ActiveRecord::Schema.define(version: 20170427183106) do
   create_table "people", force: :cascade do |t|
     t.text     "name"
     t.text     "affiliation"
-    t.text     "description"
+    t.text     "details"
     t.text     "notes"
     t.text     "metatype"
-    t.text     "bluf"
+    t.text     "summary"
     t.text     "active"
     t.datetime "updated_at"
   end
@@ -121,7 +124,7 @@ ActiveRecord::Schema.define(version: 20170427183106) do
   end
 
   create_table "sources", id: :integer, default: -> { "nextval('books_id_seq'::regclass)" }, force: :cascade do |t|
-    t.text     "title"
+    t.text     "name"
     t.text     "sku"
     t.date     "publication_date"
     t.integer  "edition_id"
@@ -130,7 +133,7 @@ ActiveRecord::Schema.define(version: 20170427183106) do
     t.boolean  "own"
     t.text     "isbn10"
     t.boolean  "pdfonly"
-    t.text     "back_text"
+    t.text     "details"
     t.text     "author"
     t.integer  "publisher_id"
     t.text     "isbn13"

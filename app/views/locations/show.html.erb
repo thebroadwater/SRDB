@@ -16,7 +16,8 @@
       <p class="lead"><%= @location.kind %></p>
 
       <dl>
-        <dt>Description</dt> <dd><%= @location.description %></dd>
+        <dt>Summary</dt> <dd><%= @location.summary %></dd>
+        <dt>Details</dt> <dd><%= @location.details %></dd>
         <dt>Notes</dt> <dd><%= @location.notes %></dd>
       </dl>
 
@@ -31,7 +32,7 @@
       <ul>
         <% @location.location_sources.each do |location_source| %>
           <li>
-            <%= location_source.source.title %> p. <%= location_source.pages %>
+            <%= location_source.source.name %> p. <%= location_source.pages %>
             <% if user_signed_in? %>
               <%= link_to "Delete",
                 "#{location_path(location_source.location_id)}/location_sources/#{location_source.id}",
