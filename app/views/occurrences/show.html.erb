@@ -38,9 +38,13 @@
       </ul>
 
       <% if user_signed_in? %>
-        <ul>
-          <%= render "add_source" %>
-        </ul>
+        <%= render "add_source" %>
+        <div class="form-group row justify-content-center">
+          <div>
+            <%= link_to "Edit", edit_occurrence_path(@occurrence), :class => "btn btn-primary", :role=> "button"%>
+            <%= link_to "Back", occurrences_path, :class =>"btn btn-primary", :role => "button"  %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

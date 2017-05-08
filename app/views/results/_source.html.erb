@@ -5,7 +5,8 @@
       "#{result.edition.name} Edition book"
     end %>
     <%= if result.publisher
-      "published by #{result.publisher.name}"
+      "published by #{result.publisher.name},"
     end %>
+    SKU <%= result.sku %>
   </p>
 </div>
