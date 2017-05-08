@@ -34,7 +34,8 @@
       <ul>
         <% @group.group_sources.each do |group_source| %>
           <li>
-            <%= group_source.source.title %> p. <%= group_source.pages %>
+            <%= link_to group_source.source.name,"/sources/#{group_source.source.id}" %>
+             p. <%= group_source.pages %>
             <% if user_signed_in? %>
               <%= link_to "Delete",
                 "#{group_path(group_source.group_id)}/group_sources/#{group_source.id}",

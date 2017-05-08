@@ -42,7 +42,8 @@
       <ul>
         <% @location.location_sources.each do |location_source| %>
           <li>
-            <%= location_source.source.name %> p. <%= location_source.pages %>
+            <%= link_to location_source.source.name,"/sources/#{location_source.source.id}" %>
+             p. <%= location_source.pages %>
             <% if user_signed_in? %>
               <%= link_to "Delete",
                 "#{location_path(location_source.location_id)}/location_sources/#{location_source.id}",
