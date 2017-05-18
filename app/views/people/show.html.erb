@@ -25,12 +25,13 @@
 
       <% if @person.occurrence_people.exists? %>
         <strong>Mentioned in these events:</strong><br>
-        <ul>
-          <% @person.occurrence_people.each do |occurrence_person| %>
+
+        <% @person.occurrence_people.each do |occurrence_person| %>
+          <ul>
             <%= link_to occurrence_person.occurrence.date,"/people/#{occurrence_person.occurrence.id}" %><br/>
             <%= occurrence_person.occurrence.details %>
-          <% end %>
-        </ul>
+          </ul>
+        <% end %>
       <% end %>
 
       <strong>Sources</strong><br>

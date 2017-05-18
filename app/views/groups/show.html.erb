@@ -21,12 +21,12 @@
 
       <% if @group.occurrence_groups.exists? %>
         <strong>Mentioned in these events:</strong><br>
-        <ul>
-          <% @group.occurrence_groups.each do |occurrence_group| %>
+        <% @group.occurrence_groups.each do |occurrence_group| %>
+          <ul>
             <%= link_to occurrence_group.occurrence.date,"/groups/#{occurrence_group.occurrence.id}" %><br/>
             <%= occurrence_group.occurrence.details %>
-          <% end %>
-        </ul>
+          </ul>
+        <% end %>
       <% end %>
 
       <strong>Sources</strong>

@@ -29,12 +29,12 @@
 
       <% if @location.occurrence_locations.exists? %>
         <strong>Mentioned in these events:</strong><br>
-        <ul>
-          <% @location.occurrence_locations.each do |occurrence_location| %>
+        <% @location.occurrence_locations.each do |occurrence_location| %>
+          <ul>
             <%= link_to occurrence_location.occurrence.date,"/groups/#{occurrence_location.occurrence.id}" %><br/>
             <%= occurrence_location.occurrence.details %>
-          <% end %>
-        </ul>
+          </ul>
+        <% end %>
       <% end %>
 
       <strong>Sources</strong>
