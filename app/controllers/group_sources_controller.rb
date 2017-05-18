@@ -5,6 +5,13 @@ class GroupSourcesController < ApplicationController
     redirect_to group_path(@group)
   end
 
+  def destroy
+    @group_source = GroupSource.find(params[:id])
+    @group_source.destroy
+
+    redirect_to "/groups/#{params[:group_id]}"
+  end
+
   private
     def group_source_params
       params.require(:group_source).permit(:source_id, :pages, :group_id)
