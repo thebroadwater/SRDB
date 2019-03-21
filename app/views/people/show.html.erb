@@ -28,7 +28,7 @@
 
         <% @person.occurrence_people.each do |occurrence_person| %>
           <ul>
-            <%= link_to occurrence_person.occurrence.date,"/people/#{occurrence_person.occurrence.id}" %><br/>
+            <%= link_to occurrence_person.occurrence.date,"/occurence/#{occurrence_person.occurrence.id}" %><br/>
             <%= occurrence_person.occurrence.details %>
           </ul>
         <% end %>
