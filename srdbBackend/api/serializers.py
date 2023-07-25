@@ -7,7 +7,7 @@ from .models import Book, Edition, Publisher, Event, EventRef
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
-        fields = ('sku', 'title')
+        fields = ('id', 'sku', 'title')
 
 
 class BookRefSerializer(serializers.ModelSerializer):
@@ -20,7 +20,7 @@ class EventRefSerializer(serializers.ModelSerializer):
     book = serializers.StringRelatedField()
     class Meta:
         model = EventRef
-        fields = ('book','pages',)
+        fields = ('book_id', 'book','pages',)
 
 
 class EventSerializer(serializers.ModelSerializer):
