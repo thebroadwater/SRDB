@@ -1,2 +1,0 @@
-class EventTag < ApplicationRecord
-end

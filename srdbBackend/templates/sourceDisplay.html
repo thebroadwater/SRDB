@@ -1,0 +1,18 @@
+<table>
+
+<tr>
+	<th>SKU</th>
+	<th>Title</th>
+	<th>Author</th>
+</tr>
+
+{% for srcs in src %}
+
+<tr>
+	<td>{{srcs.sku}}</td>
+	<td>{{srcs.title}}</td>
+	<td>{{srcs.author}}</td>
+</tr>
+
+{% endfor %}
+</table>

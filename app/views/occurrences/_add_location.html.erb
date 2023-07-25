@@ -1,7 +1,0 @@
-<strong>Add a location:</strong>
-
-  <%= form_for([@occurrence, @occurrence.occurrence_locations.build]) do |f| %>
-    <%= f.collection_select(:location_id, Location.order(:name).all, :id, :name) %>
-    <%= f.submit "Add"%>
-  <% end %>
-<br>

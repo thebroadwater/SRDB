@@ -1,9 +1,0 @@
-<strong>Add a source:</strong>
-
-  <%= form_for([@occurrence, @occurrence.occurrence_sources.build]) do |f| %>
-    <%= f.collection_select(:source_id, Source.order(:name).all, :id, :name) %>
-    Page(s)
-    <%= f.text_field :pages %>
-    <%= f.submit "Add"%>
-  <% end %>
-<br>
