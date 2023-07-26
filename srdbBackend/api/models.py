@@ -3,102 +3,119 @@
 from django.db import models
 from datetime import datetime
 
-class Edition(models.Model):
+class Editions(models.Model):
     name = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'edition'
+        db_table = 'editions'
 
 
-class Publisher(models.Model):
+class Publishers(models.Model):
     name = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'publisher'
+        db_table = 'publishers'
 
 
-class Book(models.Model):
-    title = models.TextField(blank=True, null=True)
+class Products(models.Model):
+    name = models.TextField(blank=True, null=True)
     sku = models.TextField(blank=True, null=True)
-    publication_date = models.DateField(blank=True, null=True)
-    edition = models.ForeignKey(Edition, models.DO_NOTHING, blank=True, null=True)
-    notes = models.TextField(blank=True, null=True)
-    reviewed = models.BooleanField(blank=True, null=True)
-    own = models.BooleanField(blank=True, null=True)
-    isbn10 = models.TextField(blank=True, null=True)
-    pdfonly = models.BooleanField(blank=True, null=True)
-    back_text = models.TextField(blank=True, null=True)
+    edition = models.ForeignKey('Editions', models.DO_NOTHING, blank=True, null=True)
     author = models.TextField(blank=True, null=True)
-    publisher = models.ForeignKey(Publisher, models.DO_NOTHING, blank=True, null=True)
+    publisher = models.ForeignKey('Publishers', models.DO_NOTHING, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
+    isbn10 = models.TextField(blank=True, null=True)
     isbn13 = models.TextField(blank=True, null=True)
+    publication_date = models.DateField(blank=True, null=True)
     game_date = models.DateField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)   
+    own = models.BooleanField(blank=True, null=True)
+    reviewed = models.BooleanField(blank=True, null=True)
+    pdfonly = models.BooleanField(blank=True, null=True)
     image_addr = models.TextField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'book'
+        db_table = 'products'
 
     def __str__(self):
-        return(self.title)
+        return(self.name)
 
 
-class Event(models.Model):
-    details = models.TextField(blank=True, null=True)
-    date = models.DateField(blank=True, null=True)
+class Ephemera(models.Model):
+    name = models.TextField(blank=True, null=True)
+    sku = models.TextField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
+    reviewed = models.BooleanField(blank=True, null=True)
+    own = models.BooleanField(blank=True, null=True)
+    publisher = models.ForeignKey('Publishers', models.DO_NOTHING, blank=True, null=True)
+    image_addr = models.TextField(blank=True, null=True)
     updated_at = models.DateTimeField(blank=True, null=True)
-    books = models.ManyToManyField('Book', through='EventRef')
 
     class Meta:
         managed = False
-        db_table = 'event'
+        db_table = 'ephemera'
+
+    def __str__(self):
+        return(self.name)
+
+class Events(models.Model):
+    details = models.TextField(blank=True, null=True)
+    date = models.DateField(blank=True, null=True)
+    updated_at = models.DateTimeField(blank=True, null=True)
+    product = models.ManyToManyField('Products', through='EventRefs')
+
+    class Meta:
+        managed = False
+        db_table = 'events'
 
 
-class EventRef(models.Model):
-    book = models.ForeignKey('Book', models.DO_NOTHING, blank=True, null=True)
-    event = models.ForeignKey('Event', models.DO_NOTHING, blank=True, null=True)
+class EventRefs(models.Model):
+    product = models.ForeignKey('Products', models.DO_NOTHING, blank=True, null=True)
+    event = models.ForeignKey('Events', models.DO_NOTHING, blank=True, null=True)
     pages = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'event_ref'
+        db_table = 'event_refs'
 
     def __str__(self):
         return(self.pages)
 
 
 
-class GroupMember(models.Model):
-    group = models.ForeignKey('Group', models.DO_NOTHING, blank=True, null=True)
+class GroupMembers(models.Model):
+    group = models.ForeignKey('Groups', models.DO_NOTHING, blank=True, null=True)
     person = models.ForeignKey('People', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'group_member'
+        db_table = 'group_members'
 
 
-class GroupRef(models.Model):
-    book = models.ForeignKey('Book', models.DO_NOTHING)
-    group = models.ForeignKey('Group', models.DO_NOTHING)
+class GroupRefs(models.Model):
+    product = models.ForeignKey('Products', models.DO_NOTHING)
+    group = models.ForeignKey('Groups', models.DO_NOTHING)
     pages = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'group_ref'
+        db_table = 'group_refs'
 
 
-class GroupTag(models.Model):
-    group = models.ForeignKey('Group', models.DO_NOTHING, blank=True, null=True)
-    tag = models.ForeignKey('Tag', models.DO_NOTHING, blank=True, null=True)
+class GroupTags(models.Model):
+    group = models.ForeignKey('Groups', models.DO_NOTHING, blank=True, null=True)
+    tag = models.ForeignKey('Tags', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'group_tag'
+        db_table = 'group_tags'
 
 
-class Group(models.Model):
+class Groups(models.Model):
     name = models.TextField(blank=True, null=True)
     kind = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
@@ -107,29 +124,29 @@ class Group(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'group'
+        db_table = 'groups'
 
 
-class LocationRef(models.Model):
-    book = models.ForeignKey('Book', models.DO_NOTHING)
-    location = models.ForeignKey('Location', models.DO_NOTHING)
+class LocationRefs(models.Model):
+    product = models.ForeignKey('Products', models.DO_NOTHING)
+    location = models.ForeignKey('Locations', models.DO_NOTHING)
     pages = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'location_ref'
+        db_table = 'location_refs'
 
 
-class LocationTag(models.Model):
-    location = models.ForeignKey('Location', models.DO_NOTHING, blank=True, null=True)
-    tag = models.ForeignKey('Tag', models.DO_NOTHING, blank=True, null=True)
+class LocationTags(models.Model):
+    location = models.ForeignKey('Locations', models.DO_NOTHING, blank=True, null=True)
+    tag = models.ForeignKey('Tags', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'location_tag'
+        db_table = 'location_tags'
 
 
-class Location(models.Model):
+class Locations(models.Model):
     name = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     kind = models.TextField(blank=True, null=True)
@@ -141,7 +158,7 @@ class Location(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'location'
+        db_table = 'locations'
 
 
 class People(models.Model):
@@ -159,28 +176,29 @@ class People(models.Model):
         db_table = 'people'
 
 
-class PersonRef(models.Model):
-    book = models.ForeignKey(Book, models.DO_NOTHING)
-    person = models.ForeignKey(People, models.DO_NOTHING)
+class PeopleRefs(models.Model):
+    product = models.ForeignKey('Products', models.DO_NOTHING)
+    person = models.ForeignKey('People', models.DO_NOTHING)
     pages = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'person_ref'
+        db_table = 'people_refs'
 
 
-class PersonTag(models.Model):
-    person = models.ForeignKey(People, models.DO_NOTHING, blank=True, null=True)
-    tag = models.ForeignKey('Tag', models.DO_NOTHING, blank=True, null=True)
+class PeopleTags(models.Model):
+    person = models.ForeignKey('People', models.DO_NOTHING, blank=True, null=True)
+    tag = models.ForeignKey('Tags', models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'person_tag'
+        db_table = 'people_tags'
 
 
-class Tag(models.Model):
+class Tags(models.Model):
     name = models.TextField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'tag'
+        db_table = 'tags'
+

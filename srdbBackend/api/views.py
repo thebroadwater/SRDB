@@ -1,15 +1,17 @@
 #from django.shortcuts import render
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets
+from rest_framework.response import Response
 
-from api.serializers import BookSerializer, EventSerializer
-from api.models import Book, Edition, Publisher, Event
+from api.serializers import ProductSerializer, EventSerializer
+from api.models import Products, Editions, Publishers, Events
 
 
-class BookViewSet(viewsets.ModelViewSet, mixins.RetrieveModelMixin):
-    serializer_class = BookSerializer
-    queryset = Book.objects.all().order_by('sku')
-    filterset_fields = ['title', 'sku', 'id']    
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Products.objects.all().order_by('sku')
+    serializer_class = ProductSerializer
+    filterset_fields = ['name', 'sku', 'id']    
 
-class EventViewSet(viewsets.ModelViewSet, mixins.RetrieveModelMixin):
-    queryset = Event.objects.all().order_by('date')
+
+class EventViewSet(viewsets.ModelViewSet):
+    queryset = Events.objects.all().order_by('date')
     serializer_class = EventSerializer
