@@ -1,1 +1,1 @@
-web: gunicorn srdbBackendwsgi
+web: gunicorn srdbBackend.wsgi
