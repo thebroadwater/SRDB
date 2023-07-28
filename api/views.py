@@ -8,7 +8,7 @@ from api.models import Products, Editions, Publishers, Events
 class ProductViewSet(mixins.RetrieveModelMixin, 
                    mixins.ListModelMixin,
                    viewsets.GenericViewSet):
-    queryset = Products.objects.all().order_by('sku')
+    queryset = Products.objects.all().order_by('name')
     serializer_class = ProductSerializer
     filterset_fields = ['name', 'sku', 'id', 'own']    
 

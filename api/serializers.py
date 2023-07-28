@@ -7,7 +7,7 @@ from .models import Products, Editions, Publishers, Events, EventRefs
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Products
-        fields = ('id', 'sku', 'name')
+        fields = ('sku', 'name', 'isbn')
 
 
 class ProductRefSerializer(serializers.ModelSerializer):
