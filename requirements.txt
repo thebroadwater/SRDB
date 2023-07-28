@@ -3,3 +3,4 @@ djangorestframework
 django-environ
 django-filter
 psycopg2
+gunicorn
