@@ -1,5 +1,6 @@
 # import the standard Django Model
 # from built-in library
+import uuid
 from django.db import models
 from datetime import datetime
 
@@ -20,6 +21,7 @@ class Publishers(models.Model):
 
 
 class Products(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.TextField(blank=True, null=True)
     sku = models.TextField(blank=True, null=True)
     edition = models.ForeignKey('Editions', models.DO_NOTHING, blank=True, null=True)
