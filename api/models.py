@@ -23,7 +23,6 @@ class Products(models.Model):
     name = models.TextField(blank=True, null=True)
     sku = models.TextField(blank=True, null=True)
     edition = models.ForeignKey('Editions', models.DO_NOTHING, blank=True, null=True)
-    author = models.TextField(blank=True, null=True)
     publisher = models.ForeignKey('Publishers', models.DO_NOTHING, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     isbn10 = models.TextField(blank=True, null=True)
