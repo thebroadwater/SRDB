@@ -21,7 +21,6 @@ class Publishers(models.Model):
 
 
 class Products(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.TextField(blank=True, null=True)
     sku = models.TextField(blank=True, null=True)
     edition = models.ForeignKey('Editions', models.DO_NOTHING, blank=True, null=True)
@@ -33,11 +32,9 @@ class Products(models.Model):
     game_date = models.DateField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)   
     own = models.BooleanField(blank=True, null=False)
-    reviewed = models.BooleanField(blank=True, null=True)
     pdfonly = models.BooleanField(blank=True, null=True)
     image_addr = models.TextField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-
+  
 
     class Meta:
         managed = False
@@ -50,7 +47,6 @@ class Products(models.Model):
 class Events(models.Model):
     details = models.TextField(blank=True, null=True)
     date = models.DateField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
     product = models.ManyToManyField('Products', through='EventRefs')
 
     class Meta:
@@ -69,7 +65,6 @@ class EventRefs(models.Model):
 
     def __str__(self):
         return(self.pages)
-
 
 
 class GroupMembers(models.Model):
@@ -91,22 +86,12 @@ class GroupRefs(models.Model):
         db_table = 'group_refs'
 
 
-class GroupTags(models.Model):
-    group = models.ForeignKey('Groups', models.DO_NOTHING, blank=True, null=True)
-    tag = models.ForeignKey('Tags', models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'group_tags'
-
-
 class Groups(models.Model):
     name = models.TextField(blank=True, null=True)
-    kind = models.TextField(blank=True, null=True)
+    type = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     subtype = models.TextField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-
+ 
     class Meta:
         managed = False
         db_table = 'groups'
@@ -122,15 +107,6 @@ class LocationRefs(models.Model):
         db_table = 'location_refs'
 
 
-class LocationTags(models.Model):
-    location = models.ForeignKey('Locations', models.DO_NOTHING, blank=True, null=True)
-    tag = models.ForeignKey('Tags', models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'location_tags'
-
-
 class Locations(models.Model):
     name = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
@@ -139,7 +115,6 @@ class Locations(models.Model):
     city = models.TextField(blank=True, null=True)
     country = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -154,8 +129,7 @@ class People(models.Model):
     metatype = models.TextField(blank=True, null=True)
     bluf = models.TextField(blank=True, null=True)
     active = models.TextField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-
+ 
     class Meta:
         managed = False
         db_table = 'people'
@@ -169,15 +143,6 @@ class PeopleRefs(models.Model):
     class Meta:
         managed = False
         db_table = 'people_refs'
-
-
-class PeopleTags(models.Model):
-    person = models.ForeignKey('People', models.DO_NOTHING, blank=True, null=True)
-    tag = models.ForeignKey('Tags', models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'people_tags'
 
 
 class Tags(models.Model):
